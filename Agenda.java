@@ -1,6 +1,9 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Calendar;
+import java.util.ArrayList;
+
 public class Agenda {
-    private Map<String, ArrayList<Reunion>> reunions = new HashMap<>();
+    private Map<Calendar, dayMeeting> reunions = new HashMap<>();
     private int[][] month = new int[7][7];
 
     public static void main(String[] args) {
@@ -53,14 +56,17 @@ public class Agenda {
 		}
     }
 
-    public void addReunion(String key, Reunion data) {
+    public void addReunion(Calendar key, Reunion data) {
         // Verificar si el ArrayList existe
         if (!reunions.containsKey(key)) {
-            ArrayList<Reunion> nuevoArray = new ArrayList<>();
-            reunions.put(key, nuevoArray);
+            dayMeeting newDay = new dayMeeting();
+            reunions.put(key, reunion);
         }
+        else
+				{
+					
+				}
         
-        reunions.get(key).add(data);
     }
 
     private int search(ArrayList<Reunion> target, String title) {

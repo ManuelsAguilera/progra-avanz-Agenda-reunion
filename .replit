@@ -1,5 +1,5 @@
-compile = "javac *.java"
-run = "bash run.sh"
+compile = "javac dayMeeting.java"
+run = "bash java dayMeeting"
 hidden = ["**/*.class"]
 
 [packager]
