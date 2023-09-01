@@ -11,12 +11,12 @@ public class dayMeeting {
 	{
 		dayMeeting manyana = new dayMeeting();
 		manyana.putMeeting("Progra avanzada", "Ir a clases",1100);
-		manyana.putMeeting("Progra avanzada2","ayudantia",1300);
-		manyana.putMeeting("Etica Cristiana","Aburrirme",1400);
+		manyana.putMeeting("Progra avanzada2","ayudantia",1400);
+		manyana.putMeeting("Etica Cristiana","Aburrirme",1300);
 		manyana.showAllMeeting();
 		manyana.popMeeting("Progra avanzada2");
 		manyana.showMeeting("Progra avanzada2");
-
+    
 		return;
 	}
 	
