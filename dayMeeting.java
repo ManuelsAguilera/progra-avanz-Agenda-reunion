@@ -1,46 +1,55 @@
 import java.util.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class dayMeeting {
 	private ArrayList<String> titleArr;
 	private ArrayList<String> descriptionArr;
 	private ArrayList<Integer> hourArr;
 
+	public static void main(String[] args)
+	{
+		dayMeeting manyana = new dayMeeting();
+		manyana.putMeeting("Progra avanzada", "Ir a clases",1100);
+		manyana.putMeeting("Progra avanzada2","ayudantia",1300);
+		manyana.putMeeting("Etica Cristiana","Aburrirme",1400);
+		manyana.showAllMeeting();
+		manyana.popMeeting("Progra avanzada2");
+		manyana.showMeeting("Progra avanzada2");
+
+		return;
+	}
 	
 	public dayMeeting()
 	{
-		ArrayList<String> titleArr = new ArrayList<>();
-		ArrayList<String> description = new ArrayList<>();
-		ArrayList<Integer> hour = new ArrayList<>();
+		titleArr = new ArrayList<>();
+		descriptionArr = new ArrayList<>();
+		hourArr = new ArrayList<>();
 	}
-	private int insertSort(int data)
-	{
-		for (int i = 0; i < hourArr.size(); i++)
-			{
-				if (data == hourArr.get(i))
-				{
-					hourArr.add(data,i);
-					return i;
-				}
-			}
-		hourArr.add(data)
-		return hourArr.size();
-	}
+  
   
 	public void putMeeting(String title, String description, int hour)
   {  
-		//Modificar para agregar insertion Sort
-  	int index = insertSort(hour);
-    descriptionArr.add(description,index);
-    hourArr.add(hour,index);
-    
+    for (int i = 0; i < hourArr.size(); i++)
+    {
+      if (hour < hourArr.get(i))
+      {
+        hourArr.add(i,hour);
+        titleArr.add(i,title);
+        descriptionArr.add(i, description);
+        return;
+      }
+    }
+    hourArr.add(hour);
+    titleArr.add(title);
+    descriptionArr.add(description);
 	}
   
 	public void popMeeting(String title)
   {
     int contador=-1;
-    for (int i = 0; i < titlArr.size(); i++) {
-      if (titleArr.get(i).equals(title) {
+    for (int i = 0; i < titleArr.size(); i++) {
+      if (titleArr.get(i).equals(title)) {
         contador=i;
         titleArr.remove(i);
         descriptionArr.remove(i);
@@ -52,10 +61,10 @@ public class dayMeeting {
   public void showMeeting(int hour)
   {
     for (int i = 0; i<hourArr.size();i++){
-      if (hourArr.get(i).equals(hour)){
-        titleArr.get(i).printR();
-        descriptionArr.get(i).printR();
-        hourArr.get(i).printR(); 
+      if (hourArr.get(i)==hour){
+        System.out.println(titleArr.get(i));
+        System.out.println(descriptionArr.get(i));
+        System.out.println(hourArr.get(i)); 
       }
     }
   }
@@ -63,9 +72,9 @@ public class dayMeeting {
   {
     for (int i = 0; i<hourArr.size();i++){
       if (titleArr.get(i).equals(title) ){
-        titleArr.get(i).printR();
-        descriptionArr.get(i).printR();
-        hourArr.get(i).printR(); 
+        System.out.println(titleArr.get(i));
+        System.out.println(descriptionArr.get(i));
+        System.out.println(hourArr.get(i)); 
         System.out.println();
       }
     }
