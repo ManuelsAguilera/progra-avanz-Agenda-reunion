@@ -7,26 +7,12 @@ public class dayMeeting {
 	private ArrayList<String> descriptionArr;
 	private ArrayList<Integer> hourArr;
 
-	public static void main(String[] args)
-	{
-		dayMeeting manyana = new dayMeeting();
-		manyana.putMeeting("Progra avanzada", "Ir a clases",1100);
-		manyana.putMeeting("Progra avanzada2","ayudantia",1400);
-		manyana.putMeeting("Etica Cristiana","Aburrirme",1300);
-		manyana.showAllMeeting();
-		manyana.popMeeting("Progra avanzada2");
-		manyana.showMeeting("Progra avanzada2");
-    
-		return;
-	}
-	
 	public dayMeeting()
 	{
 		titleArr = new ArrayList<>();
 		descriptionArr = new ArrayList<>();
 		hourArr = new ArrayList<>();
 	}
-  
   
 	public void putMeeting(String title, String description, int hour)
   {  
@@ -68,6 +54,7 @@ public class dayMeeting {
       }
     }
   }
+  
 	public void showMeeting(String title)
   {
     for (int i = 0; i<hourArr.size();i++){
@@ -77,12 +64,6 @@ public class dayMeeting {
         System.out.println(hourArr.get(i)); 
         System.out.println();
       }
-    }
-  }
-
-  public void showAllMeeting(){
-    for(String titulo : titleArr){
-      showMeeting(titulo);
     }
   }
 }
