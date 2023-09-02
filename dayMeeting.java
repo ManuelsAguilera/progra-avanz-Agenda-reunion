@@ -65,23 +65,22 @@ public class dayMeeting {
         System.out.println();
       }
     }
+
+
+
+		
   }
+	public void showMeeting()
+	{
+		for (int i = 0; i<hourArr.size();i++){
+		
+			System.out.println(titleArr.get(i));
+			System.out.println(descriptionArr.get(i));
+			System.out.println(hourArr.get(i)); 
+			System.out.println();
+      
+    }
+	}
 }
 
 
-/**
-public static void insertionSort(int[] arr) {
-        int n = arr.length;
-        
-        for (int i = 1; i < n; i++) {
-            int key = arr[i];
-            int j = i - 1;
-            
-            // Mueve los elementos del array que son mayores que la 'key' una posición adelante
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
-                j--;
-            }
-            arr[j + 1] = key;
-        }
-**/

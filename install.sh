@@ -16,8 +16,16 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+echo "Compilando AgendaApp.java..."
+javac AgendaApp.java
+
+if [ $? -ne 0 ]; then
+    echo "Error de compilación en dayMeeting.java."
+    exit 1
+fi
+
 echo "Ejecutando el programa principal..."
-java MainClass  # Reemplaza "MainClass" con el nombre de tu clase principal
+java AgendaApp  # Reemplaza "MainClass" con el nombre de tu clase principal
 
 if [ $? -ne 0 ]; then
     echo "Error al ejecutar el programa."

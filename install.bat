@@ -17,8 +17,17 @@ if errorlevel 1 (
     exit /b
 )
 
+echo Compilando AgendaApp.java...
+javac AgendaApp.java
+
+if errorlevel 1 (
+    echo Error de compilación en AgendaApp.java.
+    pause
+    exit /b
+)
+
 echo Ejecutando el programa principal...
-java Agenda  
+java AgendaApp
 
 if errorlevel 1 (
     echo Error al ejecutar el programa.

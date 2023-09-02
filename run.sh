@@ -2,7 +2,7 @@
 
 # Ejecutar el programa Java
 javac *.java
-java Agenda
+java AgendaApp
 
 # Preguntar si deseas hacer un commit
 read -p "¿Deseas hacer un commit de los archivos? (y/n): " response
