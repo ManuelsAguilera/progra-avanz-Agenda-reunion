@@ -26,29 +26,59 @@ public class mainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        anadirReunionP = new javax.swing.JPopupMenu();
+        popUp = new javax.swing.JFrame();
         DisplayType = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        calendarFrame1 = new agenda.gui.calendarFrame();
+        bookFrame1 = new agenda.gui.bookFrame();
         MenuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        file = new javax.swing.JMenu();
         exitSubmenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        edit = new javax.swing.JMenu();
+        agregarReunion = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        anadirReunionP.getAccessibleContext().setAccessibleParent(jMenuItem3);
+
+        javax.swing.GroupLayout popUpLayout = new javax.swing.GroupLayout(popUp.getContentPane());
+        popUp.getContentPane().setLayout(popUpLayout);
+        popUpLayout.setHorizontalGroup(
+            popUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        popUpLayout.setVerticalGroup(
+            popUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda PUCV");
 
-        DisplayType.addTab("Calendar", jTabbedPane2);
-        DisplayType.addTab("Book", jTabbedPane1);
+        DisplayType.addTab("Calendar", calendarFrame1);
 
-        jMenu1.setText("File");
-        jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
+        javax.swing.GroupLayout bookFrame1Layout = new javax.swing.GroupLayout(bookFrame1);
+        bookFrame1.setLayout(bookFrame1Layout);
+        bookFrame1Layout.setHorizontalGroup(
+            bookFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 525, Short.MAX_VALUE)
+        );
+        bookFrame1Layout.setVerticalGroup(
+            bookFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 329, Short.MAX_VALUE)
+        );
+
+        DisplayType.addTab("Book", bookFrame1);
+
+        file.setText("File");
+        file.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu1MenuSelected(evt);
+                fileMenuSelected(evt);
             }
         });
 
@@ -59,16 +89,43 @@ public class mainGUI extends javax.swing.JFrame {
                 exitSubmenuActionPerformed(evt);
             }
         });
-        jMenu1.add(exitSubmenu);
+        file.add(exitSubmenu);
 
-        MenuBar.add(jMenu1);
+        MenuBar.add(file);
 
-        jMenu2.setText("Edit");
+        edit.setText("Edit");
 
-        jMenuItem1.setText("Añadir Reunión");
-        jMenu2.add(jMenuItem1);
+        agregarReunion.setText("Añadir Reunión");
+        agregarReunion.setComponentPopupMenu(anadirReunionP);
+        agregarReunion.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                agregarReunionComponentAdded(evt);
+            }
+        });
+        agregarReunion.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                agregarReunionComponentShown(evt);
+            }
+        });
+        edit.add(agregarReunion);
 
-        MenuBar.add(jMenu2);
+        jMenuItem2.setText("Quitar Reunión");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        edit.add(jMenuItem2);
+
+        jMenuItem3.setText("Buscar Reunión");
+        edit.add(jMenuItem3);
+
+        jMenu3.setText("jMenu3");
+        jMenu3.add(jSeparator1);
+
+        edit.add(jMenu3);
+
+        MenuBar.add(edit);
 
         setJMenuBar(MenuBar);
 
@@ -82,19 +139,31 @@ public class mainGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DisplayType, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+            .addComponent(DisplayType)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuSelected
+    private void fileMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_fileMenuSelected
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1MenuSelected
+    }//GEN-LAST:event_fileMenuSelected
 
     private void exitSubmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitSubmenuActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitSubmenuActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void agregarReunionComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_agregarReunionComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarReunionComponentShown
+
+    private void agregarReunionComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_agregarReunionComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarReunionComponentAdded
 
     /**
      * @param args the command line arguments
@@ -134,11 +203,17 @@ public class mainGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane DisplayType;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JMenuItem agregarReunion;
+    private javax.swing.JPopupMenu anadirReunionP;
+    private agenda.gui.bookFrame bookFrame1;
+    private agenda.gui.calendarFrame calendarFrame1;
+    private javax.swing.JMenu edit;
     private javax.swing.JMenuItem exitSubmenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JMenu file;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JFrame popUp;
     // End of variables declaration//GEN-END:variables
 }
