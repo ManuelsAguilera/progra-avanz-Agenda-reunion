@@ -1,115 +1,58 @@
 package agenda.logic;
 
 //import java.util.*;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class dayMeeting {
-    private ArrayList<String> titleArr;
-    private ArrayList<String> descriptionArr;
-    private ArrayList<Integer> hourArr;
-
+    private ArrayList<Meeting> meetings;
+    
     public dayMeeting()
     {
-        titleArr = new ArrayList<>();
-        descriptionArr = new ArrayList<>();
-	hourArr = new ArrayList<>();
+        meetings = new ArrayList<Meeting>();
     }
     
-    public String getTitle(String title)
+    public dayMeeting(Calendar Fecha) // Para probar si funciona
     {
-        for (int i = 0; i < titleArr.size(); i++)
-        {
-            if (titleArr.get(i).equals(title))
-            {
-                return title;
-            }  
+        meetings = new ArrayList<Meeting>();
+        System.out.println("Debug: inicializada lista fecha"+Fecha.toString());
+    }
+    
+    // Inserción ordenada según hora
+    public void putMeeting(Meeting meeting) {
+    int index = 0;
+    for (int i = 0; i < meetings.size(); i++) {
+        if (meeting.getHora() > meetings.get(i).getHora()) {
+            index++;
+        } else {
+            break;
+        }
+    }
+    meetings.add(index, meeting);
+    }
+
+    // Búsqueda según título
+    public Meeting searchMeeting(String title) {
+        for (Meeting meeting : meetings) {
+            if (meeting.getNombre().equals(title)) {
+                return meeting;
+            }
         }
         return null;
     }
+
+    // Eliminación según título
+    public void popMeeting(String title) {
+        meetings.removeIf(meeting -> meeting.getNombre().equals(title));
+    }
+
+    // Eliminación según hora
+    public void popMeeting(int hour) {
+        meetings.removeIf(meeting -> meeting.getHora() == hour);
+    }
+
+
     
-    /*public String getTitle()
-    {
-        for (int i = 0; i < titleArr.size(); i++)
-        {
-            if (titleArr.get(i).equals(title))
-            {
-                return title;
-            }  
-        }
-        return null;
-    }*/
-    
-    public void putMeeting(String title, String description, int hour)
-    {  
-        for (int i = 0; i < hourArr.size(); i++)
-        {
-            if (hour < hourArr.get(i))
-            {
-                hourArr.add(i,hour);
-                titleArr.add(i,title);
-                descriptionArr.add(i, description);
-                return;
-            }
-        }
-        hourArr.add(hour);
-        titleArr.add(title);
-        descriptionArr.add(description);
-    }
-  
-    public void popMeeting(String title)
-    {
-        //int contador=-1;
-        for (int i = 0; i < titleArr.size(); i++)
-        {
-            if (titleArr.get(i).equals(title))
-            {
-                //contador=i;
-                titleArr.remove(i);
-                descriptionArr.remove(i);
-                hourArr.remove(i);
-            }  
-        }
-    }
-  
-    public void showMeeting(int hour)
-    {
-        for (int i = 0; i<hourArr.size();i++)
-        {
-            if (hourArr.get(i)==hour)
-            {
-                System.out.println(titleArr.get(i));
-                System.out.println(descriptionArr.get(i));
-                System.out.println(hourArr.get(i)); 
-            }
-        }
-    }
-  
-    public void showMeeting(String title)
-    {
-        for (int i = 0; i<hourArr.size();i++)
-        {
-            if (titleArr.get(i).equals(title))
-            {
-                System.out.println(titleArr.get(i));
-                System.out.println(descriptionArr.get(i));
-                System.out.println(hourArr.get(i)); 
-                System.out.println();
-            }
-        }
-    }
-	
-    public void showMeeting()
-    {
-        for (int i = 0; i<hourArr.size();i++)
-        {
-            System.out.println(titleArr.get(i));
-            System.out.println(descriptionArr.get(i));
-            System.out.println(hourArr.get(i)); 
-            System.out.println();
-        }
-    }
 }
-
-
-
+    

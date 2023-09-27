@@ -1,6 +1,6 @@
 package agenda.logic;
 
-import java.util.Map;
+
 import java.util.HashMap;
 import java.util.Calendar;
 //import java.util.Scanner;
@@ -14,106 +14,39 @@ public class Agenda {
         {
             reunions.put(key, new dayMeeting());
         }
-        reunions.get(key).putMeeting(title, description, hour);
-    }
-
-    public void searchMeeting(Calendar key, String title)
-    {
+        Meeting newMeeting = new Meeting(title,description,hour);
         
-        if (!reunions.containsKey(key)) 
-        {
-            System.out.println("No existe el elemento buscado");
-            return;
+        reunions.get(key).putMeeting(newMeeting);
+    }
+    
+    
+
+    public Meeting popDayMeeting(Calendar key, String title) {
+        if (!reunions.containsKey(key)) {
+            System.out.println("El elemento que se quiere eliminar no existe");
+            return null;
         }
         
-        dayMeeting dayMeetings = reunions.get(key);
-        if (dayMeetings.getTitle(title) != null) 
-        {
-            showDate(key,title);
-        } else 
-        {
+        dayMeeting meetings = reunions.get(key);
+        
+        Meeting meeting = meetings.searchMeeting(title);
+        if (meeting != null) {
+            meetings.popMeeting(title);
+        } else {
             System.out.println("No se encontraron reuniones con el título especificado en la fecha.");
         }
+        return meeting;
     }
 
-
-    public void popDayMeeting(Calendar key, String title)
-    {
-        if (!reunions.containsKey(key))
-        {
-            System.out.println("El elemento que se quiere eliminar no existe");
-            return;
-        }
-        reunions.get(key).popMeeting(title);
-    }
-
-    public void popDayMeeting(Calendar key)
-    {
-        if (!reunions.containsKey(key))
-        {
+    public dayMeeting popDayMeeting(Calendar key) {
+        if (!reunions.containsKey(key)) {
             System.out.println("El elemento que se deseaba eliminar no existe");
-            return;
+            return null;
         }
-        reunions.remove(key);
+        return reunions.remove(key);
     }
-    
-    public void showDate(Calendar key) {
-        boolean foundMeetings = false;
-            
-        /*
-        if (!reunions.containsKey(key))
-        {
-            System.out.println("El elemento que se deseaba ver no existe");
-            return;
-        }*/
-        
-        for (Map.Entry<Calendar, dayMeeting> entry : reunions.entrySet()) {
-            Calendar fechaEnMapa = entry.getKey();
-        
-            if (isSameDay(fechaEnMapa, key)) {
-                entry.getValue().showMeeting();
-                foundMeetings = true;
-            }
-        }
 
-        if (!foundMeetings) {
-            System.out.println("No se encontraron reuniones en la fecha específicada");
-        }
-    }
+
   
-    private boolean isSameDay(Calendar cal1, Calendar cal2)
-    {
-        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-             cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH) &&
-             cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
-    }
-    
-    public void showDate(Calendar key, String title) {
-        boolean foundMeeting = false;
-
-        for (Map.Entry<Calendar, dayMeeting> entry : reunions.entrySet()) {
-            Calendar fechaEnMapa = entry.getKey();
-            dayMeeting meeting = entry.getValue();
-
-            if (isSameDay(fechaEnMapa, key) && meeting.getTitle(title).equals(title)) {
-                meeting.showMeeting();
-                foundMeeting = true;
-            }
-        }
-
-        if (!foundMeeting) {
-            System.out.println("No matching meetings found for the specified date and title");
-        }
-    }
-    
-    public void showAllReunions() {
-        for (Map.Entry<Calendar, dayMeeting> entry : reunions.entrySet()) {
-            Calendar date = entry.getKey();
-            dayMeeting meeting = entry.getValue();
-
-            System.out.println("Date: " + date.getTime());
-            meeting.showMeeting();
-        }
-    }
-    
 }
+    
