@@ -480,15 +480,15 @@ public class mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField10ActionPerformed
     
     public static Calendar parseDateToCalendar(String dateString) {
-    try {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date date = dateFormat.parse(dateString);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        return calendar;
-    } catch (ParseException e) {
-        return null; // Return null if the input string is not in the expected format
-    }
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = dateFormat.parse(dateString);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            return calendar;
+        } catch (ParseException e) {
+            return null; // Return null if the input string is not in the expected format
+        }
     }
     public int parseStringHour(String timeString) {
         try {
@@ -511,7 +511,7 @@ public class mainGUI extends javax.swing.JFrame {
         Calendar fecha = parseDateToCalendar(agregarFecha.getText() );
         int hora = parseStringHour(agregarHora.getText());
         
-        agendaMain.addReunion(fecha,nombre,descripcion,hora);
+        agendaMain.addMeeting(fecha,nombre,descripcion,hora);
     }//GEN-LAST:event_AgregarBotonActionPerformed
 
     private void buscarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFechaActionPerformed
