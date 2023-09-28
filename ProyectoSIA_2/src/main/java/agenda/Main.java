@@ -14,9 +14,10 @@ public class Main {
         String servidorSmtp = "smtp.gmail.com";
         String puertoSmtp = "587";
         String correoRemitente = "agendaprograavanz@gmail.com";
-        String contraseña = "TuContraseña"; // Usa tu contraseña real o de aplicación menos segura
+        String contraseña = "holn dvph wksv ohrt "; // Usa tu contraseña real o de aplicación menos segura
 
-        EnviarMail mailSender = new EnviarMail(servidorSmtp, puertoSmtp, correoRemitente, contraseña);
+        EnviarMail mailSender;
+        mailSender = new EnviarMail(servidorSmtp, puertoSmtp, correoRemitente, contraseña);
 
         String destinatario = "manuel.aguilera.e@mail.pucv.cl";
         String asunto = "Test";

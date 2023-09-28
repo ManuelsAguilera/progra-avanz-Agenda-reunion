@@ -25,14 +25,13 @@ public class EnviarMail {
         this.correoRemitente = correoRemitente;
         this.contraseña = cifrarContraseña(contraseña);
     }
-    
-    
-    // Método para enviar un correo
+
     public void enviarMail(String destinatario, String asunto, String mensajeCorreo) {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", servidorSmtp);
         properties.put("mail.smtp.port", puertoSmtp);
         properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true"); // Habilita STARTTLS
 
         Session session = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -56,12 +55,7 @@ public class EnviarMail {
         }
     }
 
-    // Método para cifrar la contraseña (puedes implementar tu propia lógica de cifrado)
     private String cifrarContraseña(String contraseña) {
-        // Aquí puedes implementar la lógica para cifrar la contraseña
-        return contraseña; // Esta implementación es simplista, debes utilizar una técnica segura en una aplicación real
+        return contraseña;
     }
-
-
 }
-
