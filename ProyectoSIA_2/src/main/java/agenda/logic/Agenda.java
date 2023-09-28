@@ -1,10 +1,6 @@
 package agenda.logic;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,7 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 //import java.util.Scanner;
 
 public class Agenda {
