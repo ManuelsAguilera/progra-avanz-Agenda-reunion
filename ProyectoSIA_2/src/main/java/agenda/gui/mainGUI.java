@@ -11,9 +11,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
+// Project libraries
 import agenda.logic.*;
 import agenda.correo.EnviarMail;
-import javax.swing.JOptionPane;
+
 
 /**
  *

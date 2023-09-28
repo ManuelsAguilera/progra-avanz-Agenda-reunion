@@ -45,7 +45,22 @@ public class Agenda {
         }
         return reunions.remove(key);
     }
+    
+public Meeting searchMeeting(Calendar key, String title) {
+        if (!reunions.containsKey(key)) {
+            System.out.println("No existe el elemento buscado");
+            return null;
+        }
 
+        dayMeeting dayMeetings = reunions.get(key);
+        Meeting meeting = dayMeetings.searchMeeting(title);
+        if (meeting != null) {
+            return meeting;
+        } else {
+            System.out.println("No se encontraron reuniones con el título especificado en la fecha.");
+            return null;
+        }
+    }
 
   
 }
