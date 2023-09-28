@@ -8,7 +8,7 @@
  */
 package agenda.correo;
 
-import agenda.logic.Meeting;
+import agenda.logic.*;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

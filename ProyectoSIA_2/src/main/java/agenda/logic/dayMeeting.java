@@ -13,6 +13,11 @@ public class dayMeeting {
         meetings = new ArrayList<Meeting>();
     }
     
+    public ArrayList<Meeting> getMeetings()
+    {
+        return (ArrayList<Meeting>) meetings.clone();
+    }
+    
     public dayMeeting(Calendar Fecha) // Para probar si funciona
     {
         meetings = new ArrayList<Meeting>();
