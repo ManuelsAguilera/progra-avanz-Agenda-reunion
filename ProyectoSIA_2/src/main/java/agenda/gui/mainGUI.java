@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,7 +11,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import agenda.logic.Agenda;
+import agenda.logic.*;
+import agenda.correo.EnviarMail;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,15 +42,6 @@ public class mainGUI extends javax.swing.JFrame {
         anadirReunionP = new javax.swing.JPopupMenu();
         popUp = new javax.swing.JFrame();
         Operaciones = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        buscarBoton = new javax.swing.JToggleButton();
-        buscarNombre = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        buscarFecha = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jToggleButton2 = new javax.swing.JToggleButton();
         jTextField7 = new javax.swing.JTextField();
@@ -56,7 +50,7 @@ public class mainGUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        agregarPane = new javax.swing.JPanel();
         agregarNombre = new javax.swing.JTextField();
         agregarFecha = new javax.swing.JTextField();
         agregarHora = new javax.swing.JTextField();
@@ -67,6 +61,19 @@ public class mainGUI extends javax.swing.JFrame {
         AgregarBoton = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         agregarDescripcion = new javax.swing.JTextArea();
+        buscarPane = new javax.swing.JPanel();
+        buscarBoton = new javax.swing.JToggleButton();
+        buscarNombre = new javax.swing.JTextField();
+        buscarFecha = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        enviarCorreo = new javax.swing.JToggleButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        buscarDescripcionDisplay = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        buscarNombreDisplay = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         exitSubmenu = new javax.swing.JMenuItem();
@@ -84,91 +91,6 @@ public class mainGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda PUCV");
-
-        buscarBoton.setText("Buscar");
-        buscarBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarBotonActionPerformed(evt);
-            }
-        });
-
-        buscarNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarNombreActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setText("Nombre");
-
-        buscarFecha.setText("(dd-mm-yyyy)");
-        buscarFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarFechaActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("Fecha");
-
-        jScrollPane2.setViewportView(jEditorPane1);
-
-        jFormattedTextField1.setText("jFormattedTextField1");
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buscarBoton)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(18, 18, 18)
-                                .addComponent(buscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(613, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(611, 611, 611))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(33, 33, 33)
-                .addComponent(buscarBoton)
-                .addGap(16, 16, 16)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
-        );
-
-        Operaciones.addTab("Buscar", jPanel2);
 
         jToggleButton2.setText("Eliminar");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +149,7 @@ public class mainGUI extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(516, Short.MAX_VALUE))
+                .addContainerGap(598, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +166,7 @@ public class mainGUI extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(41, 41, 41)
                 .addComponent(jToggleButton2)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         Operaciones.addTab("Eliminar", jPanel3);
@@ -288,27 +210,27 @@ public class mainGUI extends javax.swing.JFrame {
         agregarDescripcion.setRows(5);
         jScrollPane1.setViewportView(agregarDescripcion);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout agregarPaneLayout = new javax.swing.GroupLayout(agregarPane);
+        agregarPane.setLayout(agregarPaneLayout);
+        agregarPaneLayout.setHorizontalGroup(
+            agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agregarPaneLayout.createSequentialGroup()
+                .addGroup(agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(agregarPaneLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(agregarPaneLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(agregarHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(agregarPaneLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                                 .addComponent(AgregarBoton))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(agregarPaneLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -317,31 +239,159 @@ public class mainGUI extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(agregarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(437, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        agregarPaneLayout.setVerticalGroup(
+            agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agregarPaneLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(agregarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(agregarPaneLayout.createSequentialGroup()
+                        .addGroup(agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(agregarHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addComponent(AgregarBoton))
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
 
-        Operaciones.addTab("Agregar", jPanel1);
+        Operaciones.addTab("Agregar", agregarPane);
+
+        buscarBoton.setText("Buscar");
+        buscarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBotonActionPerformed(evt);
+            }
+        });
+
+        buscarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarNombreActionPerformed(evt);
+            }
+        });
+
+        buscarFecha.setText("(dd-mm-yyyy)");
+        buscarFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarFechaActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Nombre");
+
+        jLabel13.setText("Fecha");
+
+        enviarCorreo.setText("Enviar  al Correo");
+        enviarCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enviarCorreoActionPerformed(evt);
+            }
+        });
+
+        buscarDescripcionDisplay.setEditable(false);
+        buscarDescripcionDisplay.setBackground(new java.awt.Color(204, 204, 255));
+        buscarDescripcionDisplay.setColumns(20);
+        buscarDescripcionDisplay.setRows(5);
+        buscarDescripcionDisplay.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(buscarDescripcionDisplay);
+        buscarDescripcionDisplay.getAccessibleContext().setAccessibleName("");
+
+        jLabel5.setText("Reunion Display");
+
+        buscarNombreDisplay.setBackground(new java.awt.Color(204, 204, 255));
+        buscarNombreDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buscarNombreDisplay.setLabelFor(AgregarBoton);
+        buscarNombreDisplay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(157, Short.MAX_VALUE)
+                .addComponent(buscarNombreDisplay)
+                .addGap(83, 83, 83))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buscarNombreDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout buscarPaneLayout = new javax.swing.GroupLayout(buscarPane);
+        buscarPane.setLayout(buscarPaneLayout);
+        buscarPaneLayout.setHorizontalGroup(
+            buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buscarPaneLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(buscarPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(buscarPaneLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(buscarBoton)
+                        .addGap(502, 502, 502))))
+            .addGroup(buscarPaneLayout.createSequentialGroup()
+                .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(buscarPaneLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarPaneLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(buscarPaneLayout.createSequentialGroup()
+                                .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(104, 104, 104)
+                                .addComponent(enviarCorreo)))
+                        .addGap(375, 375, 375)))
+                .addContainerGap())
+        );
+        buscarPaneLayout.setVerticalGroup(
+            buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buscarPaneLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(buscarBoton))
+                .addGap(31, 31, 31)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(buscarPaneLayout.createSequentialGroup()
+                        .addComponent(enviarCorreo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(buscarPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(8, 8, 8)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(129, 129, 129))))
+        );
+
+        Operaciones.addTab("Buscar", buscarPane);
 
         file.setText("File");
         file.addMenuListener(new javax.swing.event.MenuListener() {
@@ -463,16 +513,46 @@ public class mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarBotonActionPerformed
 
     private void buscarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFechaActionPerformed
-        // TODO add your handling code here:
+        
+
     }//GEN-LAST:event_buscarFechaActionPerformed
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
-        // TODO add your handling code here:
+        String nombre = buscarNombre.getText();
+        String fechaTexto = buscarFecha.getText();
+        System.out.println("Boton buscar");
+        
+        
+        if (nombre.isEmpty() || fechaTexto.isEmpty()) {
+            // Muestra un mensaje de error en un cuadro de diálogo si alguno de los campos está vacío.
+            JOptionPane.showMessageDialog(this, "Ingresa datos válidos en ambos campos", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Entrada no valid");
+            return;
+        }
+        Calendar fecha = parseDateToCalendar(fechaTexto);
+        
+        if (fecha == null) {
+            // Muestra un mensaje de error en un cuadro de diálogo si alguno de los campos está vacío.
+            JOptionPane.showMessageDialog(this, "Fecha invalida", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Continúa con el procesamiento de la fecha si ambos campos tienen datos.
+        
+        Meeting storeMeeting = agendaMain.searchMeeting(fecha, nombre);
+        
+        
+        System.out.println("Meeting "+storeMeeting.getNombre());
+        System.out.println("desc: "+storeMeeting.getDescripcion());
+        System.out.println("hora "+storeMeeting.getHora());
+        //Mostrar en pantalla
+        buscarNombreDisplay.setText(storeMeeting.getNombre()+" A las "+storeMeeting.getHora());
+        buscarDescripcionDisplay.setText(storeMeeting.getDescripcion());
     }//GEN-LAST:event_buscarBotonActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    private void enviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarCorreoActionPerformed
+        
+    }//GEN-LAST:event_enviarCorreoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -517,14 +597,17 @@ public class mainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField agregarFecha;
     private javax.swing.JTextField agregarHora;
     private javax.swing.JTextField agregarNombre;
+    private javax.swing.JPanel agregarPane;
     private javax.swing.JPopupMenu anadirReunionP;
     private javax.swing.JToggleButton buscarBoton;
+    private javax.swing.JTextArea buscarDescripcionDisplay;
     private javax.swing.JTextField buscarFecha;
     private javax.swing.JTextField buscarNombre;
+    private javax.swing.JLabel buscarNombreDisplay;
+    private javax.swing.JPanel buscarPane;
+    private javax.swing.JToggleButton enviarCorreo;
     private javax.swing.JMenuItem exitSubmenu;
     private javax.swing.JMenu file;
-    private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -532,13 +615,14 @@ public class mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
