@@ -172,7 +172,7 @@ public class mainGUI extends javax.swing.JFrame {
         );
 
         Operaciones.addTab("Eliminar", jPanel3);
-
+//prueba
         agregarNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarNombreActionPerformed(evt);
