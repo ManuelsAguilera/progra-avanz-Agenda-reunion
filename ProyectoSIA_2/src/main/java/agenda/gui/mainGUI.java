@@ -478,18 +478,34 @@ public class mainGUI extends javax.swing.JFrame {
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
     }                                            
-    
-    public static Calendar parseDateToCalendar(String dateString) {
+    //Clase de Excepción para la fecha
+    public static Calendar parseDateToCalendar(String dateString) throws InvalidDateException {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             Date date = dateFormat.parse(dateString);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
+
+            // Verificar que el mes esté entre 1 y 12 (enero a diciembre)
+            int month = calendar.get(Calendar.MONTH);
+            if (month < 1 || month > 12) {
+                throw new InvalidDateException("El mes ingresado no es válido.");
+            }
+
+            // Verificar que el día sea válido para el mes
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+            if (day < 1 || day > maxDay) {
+                throw new InvalidDateException("El día ingresado no es válido para el mes seleccionado.");
+            }
+
             return calendar;
         } catch (ParseException e) {
-            return null; // Return null if the input string is not in the expected format
+            throw new InvalidDateException("La fecha ingresada no sigue el formato dd-MM-yyyy.");
         }
     }
+
+    //Clase de excepción para la hora
     public int parseStringHour(String timeString) throws InvalidTimeException {
         //Prueba Exception
         try {
@@ -513,7 +529,7 @@ public class mainGUI extends javax.swing.JFrame {
     }
 
 
-    private void AgregarBotonActionPerformed(java.awt.event.ActionEvent evt)throws InvalidTimeException {                                             
+    private void AgregarBotonActionPerformed(java.awt.event.ActionEvent evt)throws InvalidTimeException,InvalidDateException {                                             
         
         String nombre = agregarNombre.getText();
         String descripcion = agregarDescripcion.getText();
