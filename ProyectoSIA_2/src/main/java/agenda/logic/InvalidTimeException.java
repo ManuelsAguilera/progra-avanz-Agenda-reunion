@@ -8,7 +8,7 @@ package agenda.logic;
  *
  * @author henri
  */
-//Prueba commit
+//Prueba commit auuu
 public class InvalidTimeException extends Exception {
     public InvalidTimeException(String message) {
         super(message);
