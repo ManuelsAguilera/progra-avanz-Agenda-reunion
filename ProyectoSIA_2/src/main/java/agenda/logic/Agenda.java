@@ -167,8 +167,5 @@ public Meeting searchMeeting(Calendar key, String title) {
             return false;
         }
     }
-
-
-  
 }
     
