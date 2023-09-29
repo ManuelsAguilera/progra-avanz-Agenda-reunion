@@ -491,7 +491,7 @@ public class mainGUI extends javax.swing.JFrame {
         }
     }
     public int parseStringHour(String timeString) throws InvalidTimeException {
-        //Prueba
+        //Prueba Exception
         try {
             String[] parts = timeString.split(":");
             if (parts.length == 2) {
