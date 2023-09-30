@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 // Project libraries
 import agenda.logic.*;
 import agenda.correo.EnviarMail;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -204,7 +206,13 @@ public class mainGUI extends javax.swing.JFrame {
         AgregarBoton.setText("Agregar");
         AgregarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarBotonActionPerformed(evt);
+                try {
+                    AgregarBotonActionPerformed(evt);
+                } catch (InvalidTimeException ex) {
+                    Logger.getLogger(mainGUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidDateException ex) {
+                    Logger.getLogger(mainGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
@@ -270,7 +278,11 @@ public class mainGUI extends javax.swing.JFrame {
         buscarBoton.setText("Buscar");
         buscarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarBotonActionPerformed(evt);
+                try {
+                    buscarBotonActionPerformed(evt);
+                } catch (InvalidDateException ex) {
+                    Logger.getLogger(mainGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
@@ -544,7 +556,7 @@ public class mainGUI extends javax.swing.JFrame {
 
     }                                           
 
-    private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) throws InvalidDateException {                                            
         String nombre = buscarNombre.getText();
         String fechaTexto = buscarFecha.getText();
         System.out.println("Boton buscar");
@@ -556,7 +568,10 @@ public class mainGUI extends javax.swing.JFrame {
             System.out.println("Entrada no valid");
             return;
         }
+        
         Calendar fecha = parseDateToCalendar(fechaTexto);
+        
+        
         
         if (fecha == null) {
             // Muestra un mensaje de error en un cuadro de diálogo si alguno de los campos está vacío.
