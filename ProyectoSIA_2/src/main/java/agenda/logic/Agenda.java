@@ -17,6 +17,7 @@ import java.util.Date;
 
 public class Agenda {
     private HashMap<Calendar, dayMeeting> reunions = new HashMap<>();
+    private Meeting actualMeeting;
     
     public void addMeeting(Calendar key, String title, String description, int hour)
     {
@@ -27,9 +28,21 @@ public class Agenda {
         Meeting newMeeting = new Meeting(title,description,hour);
         
         reunions.get(key).putMeeting(newMeeting);
+        
+                
+        
     }
     
+    public Meeting getActualMeeting() { //Observar ultimo buscado.
+        return actualMeeting;
+    }
     
+    public void setActualMeeting(Meeting meeting) {
+        actualMeeting.setNombre(actualMeeting.getNombre());
+        actualMeeting.setDescripcion(meeting.getDescripcion());
+        actualMeeting.setHora(meeting.getHora());
+
+    }
 
     public Meeting popDayMeeting(Calendar key, String title) {
         if (!reunions.containsKey(key)) {
@@ -65,6 +78,7 @@ public Meeting searchMeeting(Calendar key, String title) {
         dayMeeting dayMeetings = reunions.get(key);
         Meeting meeting = dayMeetings.searchMeeting(title);
         if (meeting != null) {
+            actualMeeting = meeting;
             return meeting;
         } else {
             System.out.println("No se encontraron reuniones con el título especificado en la fecha.");
@@ -87,6 +101,32 @@ public Meeting searchMeeting(Calendar key, String title) {
             return null; // Return null if the input string is not in the expected format
         }
     }
+    
+    
+
+    public Calendar getFecha(Meeting data) {
+        if (data == null) {
+            System.out.println("El objeto Meeting es nulo.");
+            return null;
+        }
+
+        // Itera sobre las reuniones en la agenda para buscar la fecha
+        for (HashMap.Entry<Calendar, dayMeeting> entry : reunions.entrySet()) {
+            dayMeeting dayMeetings = entry.getValue();
+
+            for (Meeting meeting : dayMeetings.getMeetings()) {
+                if (meeting.equals(data)) {
+                    // Si se encuentra una reunión que coincide con el objeto Meeting proporcionado,
+                    // devuelve la fecha asociada a esa reunión.
+                    return entry.getKey();
+                }
+            }
+    }
+
+    // Si no se encuentra la reunión, muestra un mensaje y devuelve null.
+    System.out.println("No se encontró una fecha relacionada al objeto Meeting.");
+    return null;
+}
     //Exportar e importar
 
     public boolean importarDatos(String filePath) {
@@ -167,5 +207,55 @@ public Meeting searchMeeting(Calendar key, String title) {
             return false;
         }
     }
+
+        public void exportarReporte(String filePath) {
+        try {
+            // Crear un escritor de archivos
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            
+            // Obtener el mes y año actual
+            Calendar today = Calendar.getInstance();
+            int mesActual = today.get(Calendar.MONTH);
+            int añoActual = today.get(Calendar.YEAR);
+            
+            // Escribir el encabezado del informe mensual
+            writer.write("Reporte Mensual:");
+            writer.newLine();
+            
+            for (HashMap.Entry<Calendar, dayMeeting> entry : reunions.entrySet()) {
+                Calendar fecha = entry.getKey();
+                
+                // Verificar si la fecha pertenece al mes actual y año actual
+                if (fecha.get(Calendar.MONTH) == mesActual && fecha.get(Calendar.YEAR) == añoActual) {
+                    // Formatear la fecha en el informe
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    String fechaStr = dateFormat.format(fecha.getTime());
+                    
+                    writer.write("Fecha: " + fechaStr);
+                    writer.newLine();
+                    
+                    dayMeeting dayMeetings = entry.getValue();
+                    
+                    for (Meeting meeting : dayMeetings.getMeetings()) {
+                        // Escribir el título y la hora de la reunión
+                        writer.write("    Título: " + meeting.getNombre() + ", Hora: " + meeting.getHora());
+                        writer.newLine();
+                        
+                        // Escribir la descripción de la reunión
+                        writer.write("    Descripción: " + meeting.getDescripcion());
+                        writer.newLine();
+                    }
+                }
+            }
+
+            // Cerrar el escritor de archivos
+            writer.close();
+            
+            System.out.println("Informe mensual exportado con éxito.");
+        } catch (IOException e) {
+            System.out.println("Error al exportar el informe mensual: " + e.getMessage());
+        }
+    }
+
 }
     
