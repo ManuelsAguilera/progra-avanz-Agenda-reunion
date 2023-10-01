@@ -29,6 +29,7 @@ class EnviarCorreo extends javax.swing.JFrame{
         data = null;
         correo = new EnviarMail(); // Se configura solo
         initComponents();
+        setLocationRelativeTo(null);
         nombres_archivos="";
     }
     
@@ -100,6 +101,12 @@ class EnviarCorreo extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Destinatario:");
+
+        correoText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correoTextActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Ingrese a quien desea enviar la reunion");
@@ -239,6 +246,10 @@ class EnviarCorreo extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(this, "Hubo un error al enviar el correo. Por favor, reintente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void correoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correoTextActionPerformed
 
     /**
      * @param args the command line arguments

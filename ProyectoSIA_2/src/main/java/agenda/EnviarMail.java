@@ -250,7 +250,15 @@ public class EnviarMail {
         }
         return false;
     }
-
+    //ESPECIALES
+    public boolean enviarMeeting(String destinatario,String asunto, String texto, File[] mArchivosAdjuntos) {
+        enviarMail(destinatario, asunto, texto,mArchivosAdjuntos,true);
+        return true;
+    }
+    public boolean enviarMeeting(String destinatario,String asunto, String texto) {
+        enviarMail(destinatario, asunto, texto,true);
+        return true;
+    }
     private String formatearHora(int hora) {
         // Convierte la hora en un formato xx:yy
         String horaStr = String.valueOf(hora);
