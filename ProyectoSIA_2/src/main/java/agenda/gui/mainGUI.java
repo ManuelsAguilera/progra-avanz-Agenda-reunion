@@ -32,6 +32,7 @@ public class MainGUI extends javax.swing.JFrame {
     public MainGUI() {
         agendaMain = new Agenda();
         
+        agendaMain.importarDatos("defaultImport.agd");        
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -62,7 +63,7 @@ public class MainGUI extends javax.swing.JFrame {
         agregadoDisplay = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         agregarTextDisplay = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        volver1 = new javax.swing.JButton();
         buscarPane = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -78,7 +79,7 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         buscarFecha = new javax.swing.JTextField();
         buscarNombre = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        volver2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         modificarNombre = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -96,7 +97,7 @@ public class MainGUI extends javax.swing.JFrame {
         nuevoNombre = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        volver3 = new javax.swing.JButton();
         eliminarPane = new javax.swing.JPanel();
         eliminarBoton = new javax.swing.JToggleButton();
         eliminarFecha = new javax.swing.JTextField();
@@ -108,7 +109,7 @@ public class MainGUI extends javax.swing.JFrame {
         eliminadoDisplay = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         eliminarTextDisplay = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        volver4 = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
         archivoMenu = new javax.swing.JMenu();
         importarArchivo = new javax.swing.JMenuItem();
@@ -193,10 +194,10 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jButton2.setText("Volver al inicio");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        volver1.setText("Volver al inicio");
+        volver1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                volver1ActionPerformed(evt);
             }
         });
 
@@ -233,7 +234,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap(330, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarPaneLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2))
+                .addComponent(volver1))
         );
         agregarPaneLayout.setVerticalGroup(
             agregarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,8 +257,8 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(volver1))
         );
 
         Operaciones.addTab("Agregar", agregarPane);
@@ -394,10 +395,10 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton3.setText("Volver al inicio");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        volver2.setText("Volver al inicio");
+        volver2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                volver2ActionPerformed(evt);
             }
         });
 
@@ -416,7 +417,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarPaneLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3))
+                .addComponent(volver2))
             .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(buscarPaneLayout.createSequentialGroup()
                     .addGap(358, 358, 358)
@@ -433,7 +434,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jButton3))
+                .addComponent(volver2))
             .addGroup(buscarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(buscarPaneLayout.createSequentialGroup()
                     .addGap(186, 186, 186)
@@ -545,10 +546,10 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton4.setText("Volver al inicio");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        volver3.setText("Volver al inicio");
+        volver3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                volver3ActionPerformed(evt);
             }
         });
 
@@ -575,7 +576,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap(211, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton4))
+                .addComponent(volver3))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,7 +593,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jDesktopPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(jButton4))
+                .addComponent(volver3))
         );
 
         Operaciones.addTab("Modificar", jPanel4);
@@ -655,10 +656,10 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Volver al inicio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        volver4.setText("Volver al inicio");
+        volver4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                volver4ActionPerformed(evt);
             }
         });
 
@@ -683,7 +684,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGap(0, 490, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarPaneLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(volver4))
         );
         eliminarPaneLayout.setVerticalGroup(
             eliminarPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -700,8 +701,8 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(eliminarBoton)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(volver4))
         );
 
         Operaciones.addTab("Eliminar", eliminarPane);
@@ -771,14 +772,13 @@ public class MainGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Operaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(Operaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Operaciones, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(Operaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
         );
 
         pack();
@@ -1135,29 +1135,33 @@ public class MainGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_generarReporteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void volver4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver4ActionPerformed
         Inicio newframe = new Inicio();
         newframe.setVisible(true);
+        agendaMain.exportarDatos("defaultImport.agd");
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_volver4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void volver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver1ActionPerformed
         Inicio newframe = new Inicio();
         newframe.setVisible(true);
+        agendaMain.exportarDatos("defaultImport.agd");
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_volver1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void volver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver2ActionPerformed
         Inicio newframe = new Inicio();
         newframe.setVisible(true);
+        agendaMain.exportarDatos("defaultImport.agd");
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_volver2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void volver3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver3ActionPerformed
         Inicio newframe = new Inicio();
         newframe.setVisible(true);
+        agendaMain.exportarDatos("defaultImport.agd");
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_volver3ActionPerformed
 
     private void enviarCorreoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarCorreoBotonActionPerformed
         correoNormal newframe = new correoNormal();
@@ -1230,10 +1234,6 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem exportarArchivo;
     private javax.swing.JMenuItem generarReporte;
     private javax.swing.JMenuItem importarArchivo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
@@ -1272,6 +1272,10 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField nuevaHora;
     private javax.swing.JTextField nuevoNombre;
     private javax.swing.JTextArea reunionDisplay;
+    private javax.swing.JButton volver1;
+    private javax.swing.JButton volver2;
+    private javax.swing.JButton volver3;
+    private javax.swing.JButton volver4;
     // End of variables declaration//GEN-END:variables
 
     

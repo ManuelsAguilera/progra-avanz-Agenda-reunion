@@ -16,8 +16,16 @@ import java.util.Date;
 //import java.util.Scanner;
 
 public class Agenda {
-    private HashMap<Calendar, dayMeeting> reunions = new HashMap<>();
+    private HashMap<Calendar, dayMeeting> reunions;
     private Meeting actualMeeting;
+    
+    public Agenda(){
+        reunions =  new HashMap<Calendar, dayMeeting>();
+        actualMeeting = null;
+        
+        
+    }
+        
     
     public void addMeeting(Calendar key, String title, String description, int hour)
     {
